@@ -41,7 +41,7 @@ export default class VideoPlayer extends Component {
          */
         this.state = {
             // Video
-            showControlBackdrop: this.props.showControlBackdrop,
+            showControlBackdrop: this.props.showControlBackdrop || true,
             resizeMode: this.props.resizeMode,
             paused: this.props.paused,
             muted: this.props.muted,
@@ -868,6 +868,7 @@ export default class VideoPlayer extends Component {
                     marginTop: this.animations.topControl.marginTop,
                 }
             ]}>
+            { this.state.showControlBackdrop && (
                 <ImageBackground
                     source={ require( './assets/img/top-vignette.png' ) }
                     style={[ styles.controls.column ]}
@@ -880,6 +881,19 @@ export default class VideoPlayer extends Component {
                         </View>
                     </View>
                 </ImageBackground>
+            )}
+            { !this.state.showControlBackdrop && (
+                <View
+                    style={[ styles.controls.column ]}>
+                    <View style={ styles.controls.topControlGroup }>
+                        { backControl }
+                        <View style={ styles.controls.pullRight }>
+                            { volumeControl }
+                            { fullscreenControl }
+                        </View>
+                    </View>
+                </View>
+            )}
             </Animated.View>
         );
     }
@@ -957,6 +971,7 @@ export default class VideoPlayer extends Component {
                     marginBottom: this.animations.bottomControl.marginBottom,
                 }
             ]}>
+            { this.state.showControlBackdrop && (
                 <ImageBackground
                     source={ require( './assets/img/bottom-vignette.png' ) }
                     style={[ styles.controls.column ]}
@@ -972,6 +987,22 @@ export default class VideoPlayer extends Component {
 
                     </View>
                 </ImageBackground>
+            )}
+            { !this.state.showControlBackdrop && (
+                <View
+                    style={[ styles.controls.column ]}>
+                    { seekbarControl }
+                    <View style={[
+                        styles.controls.row,
+                        styles.controls.bottomControlGroup
+                    ]}>
+                        { playPauseControl }
+                        { this.renderTitle() }
+                        { timerControl }
+
+                    </View>
+                </ImageBackground>
+            )}
             </Animated.View>
         );
     }
