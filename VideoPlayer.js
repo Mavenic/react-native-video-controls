@@ -1001,7 +1001,7 @@ export default class VideoPlayer extends Component {
                         { timerControl }
 
                     </View>
-                </ImageBackground>
+                </View>
             )}
             </Animated.View>
         );
