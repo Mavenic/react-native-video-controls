@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Video from 'react-native-video';
+import Video from 'react-native-gifted-chat/node_modules/react-native-video';
 import {
     TouchableWithoutFeedback,
     TouchableHighlight,
@@ -41,6 +41,7 @@ export default class VideoPlayer extends Component {
          */
         this.state = {
             // Video
+            showControlBackdrop: this.props.showControlBackdrop,
             resizeMode: this.props.resizeMode,
             paused: this.props.paused,
             muted: this.props.muted,
