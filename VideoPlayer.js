@@ -41,7 +41,7 @@ export default class VideoPlayer extends Component {
          */
         this.state = {
             // Video
-            showControlBackdrop: this.props.showControlBackdrop || true,
+            showControlBackdrop: this.props.showControlBackdrop === false ? false : true,
             resizeMode: this.props.resizeMode,
             paused: this.props.paused,
             muted: this.props.muted,
