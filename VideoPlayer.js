@@ -229,7 +229,10 @@ export default class VideoPlayer extends Component {
      * Either close the video or go to a
      * new page.
      */
-    _onEnd() {}
+    _onEnd() {
+        this.setSeekerPosition(0);
+        this.setState({ paused: true }, () => this.seekTo( 0 ))
+    }
 
     /**
      * Set the error state to true which then
